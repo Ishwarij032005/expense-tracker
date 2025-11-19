@@ -45,41 +45,29 @@ input, select {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
-.auth-fullscreen {
-    height: 100vh;
-    width: 100%;
-    background: #f1f3fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-.auth-card {
-    width: 400px;
-    background: #96baef;
-    padding: 35px 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-}
+/* ================================
+   FULLSCREEN AUTH BACKGROUND
+==================================*/
+
 
 .auth-fullscreen {
-  height: 100vh;
-  width: 100%;
   position: relative;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  padding: 20px;
+  z-index: 1;
 }
 
 .auth-fullscreen::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/bg.jpg") center/cover no-repeat;
+  background: url("/login.jpeg") center/cover no-repeat;
   filter: blur(12px) brightness(0.6);
   transform: scale(1.1);
-  z-index: -2;
+  z-index: -1;
 }
 
 .auth-card {
@@ -90,3 +78,4 @@ input, select {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
+
