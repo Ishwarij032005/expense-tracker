@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Container, Box, TextField, Button, Typography } from '@mui/material';
+import { Box, TextField, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
@@ -21,18 +21,45 @@ export default function Register() {
   };
 
   return (
-    <Container maxWidth="xs" sx={{ mt: 12 }}>
-      <Typography variant="h5" sx={{ mb: 2 }}>
-        Register
-      </Typography>
-      <Box component="form" onSubmit={submit} sx={{ display: 'grid', gap: 2 }}>
-        <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <TextField label="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <TextField label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <Button type="submit" variant="contained">
+    <div className="register-page">
+      <div className="register-card">
+
+        <Typography variant="h5" sx={{ mb: 2, textAlign: "center" }}>
           Register
-        </Button>
-      </Box>
-    </Container>
+        </Typography>
+
+        <Box component="form" onSubmit={submit} sx={{ display: "grid", gap: 2 }}>
+          <TextField
+            label="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            fullWidth
+            required
+          />
+
+          <TextField
+            label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            fullWidth
+            required
+          />
+
+          <TextField
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+            required
+          />
+
+          <Button type="submit" variant="contained" fullWidth>
+            Register
+          </Button>
+        </Box>
+
+      </div>
+    </div>
   );
 }

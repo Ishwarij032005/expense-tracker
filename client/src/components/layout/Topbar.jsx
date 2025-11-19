@@ -13,6 +13,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -45,6 +48,12 @@ export default function Topbar({ dark, setDark, toggleSidebar }) {
     navigate("/register");
     setAnchorEl(null);
   };
+
+  // Theme toggle function
+  const toggleDark = () => {
+    setDark(!dark);
+  };
+
   return (
     <AppBar position="fixed" color="inherit" elevation={1}>
       <Toolbar>
@@ -56,20 +65,21 @@ export default function Topbar({ dark, setDark, toggleSidebar }) {
           Expense Dashboard
         </Typography>
 
-        <IconButton onClick={() => setDark(!dark)}>
-          {dark ? <Brightness7Icon /> : <Brightness4Icon />}
-        </IconButton>
+        {/* -------------------------- */}
+        {/* OLD THEME TOGGLE REMOVED   */}
+        {/* -------------------------- */}
 
-        {/* Notification bell (Zoho style) */}
+        {/* NOTIFICATION ICON */}
         <IconButton sx={{ mx: 1, "&:hover": { color: "#6A5ACD" } }}>
           <NotificationsOutlinedIcon />
         </IconButton>
 
-        {/* Settings icon */}
+        {/* SETTINGS ICON */}
         <IconButton sx={{ mx: 1, "&:hover": { color: "#6A5ACD" } }}>
           <SettingsOutlinedIcon />
         </IconButton>
 
+        {/* PROFILE AVATAR */}
         <IconButton
           onClick={(e) => setAnchorEl(e.currentTarget)}
           sx={{
@@ -82,14 +92,38 @@ export default function Topbar({ dark, setDark, toggleSidebar }) {
           </Avatar>
         </IconButton>
 
+        {/* -------------------------------------------------- */}
+        {/*    NEW FLIP-CARD THEME TOGGLE BUTTON (INSERTED)   */}
+        {/* -------------------------------------------------- */}
+        <div className="profile" style={{ marginLeft: "14px" }}>
+          <div className="theme-toggle-wrapper" onClick={toggleDark}>
+            <div className="theme-toggle-card">
+              {/* FRONT FACE — Sun (Light mode) */}
+              <div className="theme-toggle-front">
+                <LightModeIcon style={{ fontSize: 22 }} />
+              </div>
+
+              {/* BACK FACE — Moon (Dark mode) */}
+              <div className="theme-toggle-back">
+                <DarkModeIcon style={{ fontSize: 22 }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
           <MenuItem onClick={goProfile}>Profile</MenuItem>
           <MenuItem onClick={goSettings}>Settings</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
 
           {!user && <MenuItem onClick={goRegister}>Register</MenuItem>}
 
           {user && <MenuItem onClick={handleLogout}>Logout</MenuItem>}
+           <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
+              
         </Menu>
+
+      
       </Toolbar>
     </AppBar>
   );
