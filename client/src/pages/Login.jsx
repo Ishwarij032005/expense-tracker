@@ -20,17 +20,35 @@ export default function Login() {
   };
 
   return (
-    <Container maxWidth="xs" sx={{ mt: 12 }}>
-      <Typography variant="h5" sx={{ mb: 2 }}>
-        Login
-      </Typography>
-      <Box component="form" onSubmit={submit} sx={{ display: 'grid', gap: 2 }}>
-        <TextField label="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <TextField label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <Button type="submit" variant="contained">
-          Login
-        </Button>
-      </Box>
-    </Container>
+    <div className="auth-fullscreen">
+      <div className="auth-card">
+        <Container maxWidth="xs" sx={{ mt: 2 }}>
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            Login
+          </Typography>
+
+          <Box component="form" onSubmit={submit} sx={{ display: 'grid', gap: 2 }}>
+            <TextField
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <TextField
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <Button type="submit" variant="contained">
+              Login
+            </Button>
+          </Box>
+        </Container>
+      </div>
+    </div>
   );
 }
