@@ -12,7 +12,12 @@ const authRoutes = require('./routes/auth');
 const expenseRoutes = require('./routes/expenses');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["https://expense-tracker-delta-ashy-12.vercel.app/login", "http://localhost:3000"],
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // routes
