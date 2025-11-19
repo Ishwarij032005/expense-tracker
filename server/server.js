@@ -13,10 +13,14 @@ const expenseRoutes = require('./routes/expenses');
 
 const app = express();
 app.use(cors({
-  origin: ["https://expense-tracker-delta-ashy-12.vercel.app/login", "http://localhost:3000"],
-  methods: "GET,POST,PUT,DELETE",
+  origin: [
+    "https://expense-tracker-git-main-ishwari-jamadades-projects.vercel.app",
+    "http://localhost:5173"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
+
 
 app.use(express.json());
 
