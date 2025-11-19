@@ -21,8 +21,8 @@ export default function Register() {
   };
 
   return (
-    <div className="register-page">
-      <div className="register-card">
+    <div className="auth-fullscreen">   {/* CHANGED */}
+      <div className="auth-card">       {/* CHANGED */}
 
         <Typography variant="h5" sx={{ mb: 2, textAlign: "center" }}>
           Register
